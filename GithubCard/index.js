@@ -35,7 +35,144 @@
     </div>
 */
 
+function githubUsers(image, user, userName,location, profile, followers, following, bio ){
 
+  //Creating Ellements
+
+  const card = document.createElement("div")
+  const userImage = document.createElement("img")
+  const info = document.createElement("div")
+  const usersName = document.createElement("h3")
+  const Username = document.createElement("p")
+  const userLocation = document.createElement("p")
+  const userProfile = document.createElement("p")
+  const link = document.createElement("a")
+  const userFollowers = document.createElement("p")
+  const userFollowing = document.createElement("p")
+  const userBio = document.createElement("p")
+
+  //Connecting Elements
+
+  card.appendChild(userImage)
+  card.appendChild(info)
+  info.appendChild(usersName)
+  info.appendChild(Username)
+  info.appendChild(userLocation)
+  info.appendChild(userProfile)
+  userProfile.appendChild(link)
+  info.appendChild(userFollowers)
+  info.appendChild(userFollowing)
+  info.appendChild(userBio)
+
+  //adding Contents
+  userImage.src = image
+  usersName.textContent = user
+  Username.textContent = userName
+  userLocation.textContent = location
+  userProfile.textContent = profile
+  
+  userFollowers.textContent = followers
+  userFollowing.textContent = following
+  userBio.textContent = bio
+
+  //adding ClassList 
+  card.classList.add("card")
+  info.classList.add("card-info")
+  usersName.classList.add("name")
+  Username.classList.add("username")
+
+
+
+
+  return card
+  
+}
+//Sellecting Parent Element
+const cards = document.querySelector(".cards")
+
+
+// API Call Request
+axios.get("https://api.github.com/users/AbdirisakAhmed")
+// axios.get("https://api.github.com/users/duraanali")
+.then(response => {
+  // response.data.forEach(function(information){
+
+  let  myImage = response.data.avatar_url
+  let myName = response.data.name
+  let myUserName = response.data.login
+  let myLocation = response.data.location
+  let myProfile = response.data.html_url
+  let myFollowers = response.data.followers
+  let myFollowing = response.data.following
+  let myBio = response.data.bio
+
+  
+    
+    
+
+    cards.appendChild(githubUsers(myImage, myName,myUserName, "Location: "+myLocation, "Profile: "+myProfile, "Followers:" +myFollowers, "Following: "+myFollowing, "Bio: "+myBio))
+  })
+// })
+
+.catch(error => {
+  console.log(error.message)
+})
+
+// const cards = document.querySelector(".cards")
+
+
+// API Call Request
+// axios.get("https://api.github.com/users/AbdirisakAhmed")
+axios.get("https://api.github.com/users/duraanali")
+.then(response => {
+  // response.data.forEach(function(information){
+
+  let  myImage = response.data.avatar_url
+  let myName = response.data.name
+  let myUserName = response.data.login
+  let myLocation = response.data.location
+  let myProfile = response.data.html_url
+  let myFollowers = response.data.followers
+  let myFollowing = response.data.following
+  let myBio = response.data.bio
+
+  
+    
+    
+
+    cards.appendChild(githubUsers(myImage, myName,myUserName, "Location: "+myLocation, "Profile: "+myProfile, "Followers:" +myFollowers, "Following: "+myFollowing, "Bio: "+myBio))
+  })
+// })
+
+.catch(error => {
+  console.log(error.message)
+})
+
+
+axios.get("https://api.github.com/users/AbdihakimWehelie")
+.then(response => {
+  // response.data.forEach(function(information){
+
+  let  myImage = response.data.avatar_url
+  let myName = response.data.name
+  let myUserName = response.data.login
+  let myLocation = response.data.location
+  let myProfile = response.data.html_url
+  let myFollowers = response.data.followers
+  let myFollowing = response.data.following
+  let myBio = response.data.bio
+
+  
+    
+    
+
+    cards.appendChild(githubUsers(myImage, myName,myUserName, "Location: "+myLocation, "Profile: "+myProfile, "Followers:" +myFollowers, "Following: "+myFollowing, "Bio: "+myBio))
+  })
+// })
+
+.catch(error => {
+  console.log(error.message)
+})
 
 /*
   STEP 4: Pass the data received from Github into your function, and append the returned markup to the DOM as a child of .cards
@@ -52,5 +189,4 @@
 */
 
 const followersArray = [];
-
 
