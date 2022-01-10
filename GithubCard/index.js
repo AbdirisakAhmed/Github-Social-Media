@@ -92,7 +92,7 @@ const cards = document.querySelector(".cards")
 
 
 // API Call Request
-axios.get("https://api.github.com/users/AbdirisakAhmed")
+axios.get("https://api.github.com/users/AbdirisakKhabir")
 // axios.get("https://api.github.com/users/duraanali")
 .then(response => {
   // response.data.forEach(function(information){
